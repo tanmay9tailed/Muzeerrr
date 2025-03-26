@@ -1,103 +1,121 @@
-import Image from "next/image";
+import React from "react";
+import { Music4, Users, Share2, Play, Plus, Headphones, Volume2 } from "lucide-react";
+import SignInButton from "@/components/signin";
 
-export default function Home() {
+function App() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="min-h-screen gradient-bg">
+      {/* Hero Section */}
+      <main className="container mx-auto px-4 py-16 relative">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full">
+          <div className="absolute top-0 left-0 w-64 h-64 bg-red-600/20 rounded-full blur-[120px]"></div>
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-red-600/10 rounded-full blur-[150px]"></div>
+        </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+        <div className="flex flex-col lg:flex-row items-center gap-12 relative">
+          <div className="flex-1 space-y-8">
+            <div className="space-y-4">
+              <div className="inline-block">
+                <div className="flex items-center gap-2 bg-red-600/10 rounded-full px-4 py-2 border border-red-600/20">
+                  <Headphones className="text-red-600 w-5 h-5" />
+                  <span className="text-sm">Experience Music Together</span>
+                </div>
+              </div>
+              <h2 className="text-7xl font-bold leading-tight">
+                Create Your Perfect
+                <span className="block text-red-600 neon-text neon-text-pulse">Music Room</span>
+                Experience
+              </h2>
+            </div>
+            <p className="text-xl text-gray-300">
+              Share music, collaborate with friends, and create unforgettable moments together. Add your favorite
+              YouTube tracks and let the music flow.
+            </p>
+            <SignInButton
+              label="Create Your Room"
+              variant="withIcon"
+              icon={<Play size={24} />} 
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+          </div>
+
+          <div className="flex-1 relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-red-600/20 to-transparent blur-3xl -rotate-12 scale-95 translate-x-4 translate-y-4"></div>
+            <div className="card-gradient rounded-2xl p-8 border border-red-600/30 animate-float backdrop-blur-xl relative">
+              <div className="absolute top-4 right-4">
+                <div className="animate-pulse">
+                  <div className="w-3 h-3 bg-red-600 rounded-full"></div>
+                </div>
+              </div>
+              <div className="space-y-6">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-2xl font-semibold">Chill Vibes Room</h3>
+                  <Share2 className="text-red-600" />
+                </div>
+                <div className="flex items-center gap-3 text-gray-300">
+                  <Users size={20} />
+                  <span>12 listeners</span>
+                  <div className="flex items-center gap-1 ml-4">
+                    <Volume2 size={16} className="text-red-600" />
+                    <div className="space-x-1">
+                      {[1, 2, 3].map((i) => (
+                        <div
+                          key={i}
+                          className={`inline-block w-1 h-${3 + i} bg-red-600 rounded-full animate-pulse`}
+                          style={{ animationDelay: `${i * 0.2}s` }}
+                        ></div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                <div className="space-y-3">
+                  <div className="bg-black/50 p-4 rounded-lg flex items-center justify-between backdrop-blur-sm border border-white/5">
+                    <span>🎵 Currently Playing: Lofi Beats</span>
+                    <Music4 className="text-red-600" />
+                  </div>
+                  <button className="w-full py-3 rounded-lg border border-red-600/50 hover:bg-red-600/20 transition-colors flex items-center justify-center gap-2 group">
+                    <Plus size={20} className="transform group-hover:rotate-180 transition-transform" />
+                    Add Track
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+      {/* Features Section */}
+      <section className="container mx-auto px-4 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {[
+            {
+              icon: Music4,
+              title: "Add Any Track",
+              description: "Simply paste YouTube links to add your favorite music to the queue.",
+            },
+            {
+              icon: Users,
+              title: "Collaborate",
+              description: "Invite friends to join your room and contribute to the playlist.",
+            },
+            {
+              icon: Share2,
+              title: "Share Instantly",
+              description: "Share your room with anyone, anywhere with a single click.",
+            },
+          ].map((feature, index) => (
+            <div
+              key={index}
+              className="card-gradient rounded-xl p-6 border border-red-600/30 feature-card backdrop-blur-xl"
+            >
+              <feature.icon className="text-red-600 w-12 h-12 mb-4" />
+              <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+              <p className="text-gray-300">{feature.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }
+
+export default App;

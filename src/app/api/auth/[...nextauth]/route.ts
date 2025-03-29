@@ -23,7 +23,7 @@ const handler = NextAuth({
 
         // If not, create a new user
         if (!existingUser) {
-          existingUser = await User.create({ email: user.email });
+          existingUser = await User.create({ email: user.email, name: user.name });
         }
 
         // Attach user ID to the session

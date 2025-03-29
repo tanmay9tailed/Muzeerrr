@@ -11,6 +11,10 @@ const UserSchema: Schema = new Schema({
     required: [true, "Email is required."],
     unique: true,
   },
+  name: {
+    type: String,
+    default: "User"
+  },
   roomId: [
     {
       type: Schema.Types.ObjectId,

@@ -233,6 +233,7 @@ export default function Room() {
       duration: "3:00",
       addedBy: "Instant Play",
       videoUrl: `https://www.youtube.com/watch?v=${videoId}`,
+      createdAt: new Date()
     };
 
     setCurrentSong(newSong);
